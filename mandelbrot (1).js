@@ -37,8 +37,8 @@ function drawMandelbrot(canvas, xStart, yStart, xEnd, yEnd, maxIterations) {
 
 // Example usage:
 const canvas = document.getElementById('myCanvas'); // Assuming you have a canvas element with id "myCanvas"
-canvas.width = 700;
-canvas.height = 700;
+canvas.width = 500;
+canvas.height = 500;
 
 const xStart = -2;
 const xEnd = 1;
