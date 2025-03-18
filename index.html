@@ -15,12 +15,6 @@
 </body>
 </html>
 
-
-
-
-
-
-
 var canvas = document.getElementById('myCanvas')
 var ctx = canvas.getContext('2d')
 ctx.canvas.width = window.innerWidth;
@@ -34,7 +28,7 @@ const REAL_SET = { start: -2, end: 1 }
 const IMAGINARY_SET = { start: -1, end: 1 }
 
 const colors = new Array(16).fill(0).map((_, i) => i === 0 ? '#000' : `#${((1 << 24) * Math.random() | 0).toString(16)}`)
-
+<script>
 function mandelbrot(c) {
     let z = { x: 0, y: 0 }, n = 0, p, d;
     do {
@@ -68,3 +62,6 @@ function draw() {
 }
 
 draw()
+    </script>
+</body>
+</html>
