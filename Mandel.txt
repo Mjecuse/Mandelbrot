@@ -1,4 +1,3 @@
-html
 <canvas id="myCanvas"></canvas>
 <script>
 var canvas = document.getElementById('myCanvas')
