@@ -6,12 +6,19 @@
 <body>
   <p>
     Below is a prime example of what a Mandelbrot Set would look like written in JS style.
-    Listed below is the Additional links
+    Listed below is the Additional links.
     <ul>
 <il><a href="https://github.com/Mjecuse/Mandelbrot.git" target="_blank">Mandelbrot GitHub Repository</a></il>
 <il><a href="https://main.d2dwrqvuor357l.amplifyapp.com/" target="_blank">AWS Hosted Application</a></il>
 </ul>
   </p>
+  <script>
+    <script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.moveTo(0, 0);
+ctx.lineTo(200, 100);
+ctx.stroke();
 const MAX_ITERATION = 80
 function mandelbrot(c) {
     let z = { x: 0, y: 0 }, n = 0, p, d;
