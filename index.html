@@ -13,12 +13,13 @@
 </ul>
   </p>
   <script>
-    <script>
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.moveTo(0, 0);
 ctx.lineTo(200, 100);
 ctx.stroke();
+</script>
+
 const MAX_ITERATION = 80
 function mandelbrot(c) {
     let z = { x: 0, y: 0 }, n = 0, p, d;
