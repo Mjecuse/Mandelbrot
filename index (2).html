@@ -1,77 +1,63 @@
 <!DOCTYPE html>
- <html>
- <h3>
-   <title>Mandelbrot Project for the 2025 Spring class session</title>
- </h3>
- <body>
-   <p>
-     Below is a prime example of what a Mandelbrot Set would look like written in JS style.
-     Listed below is the Additional links for the GitHub Https links
-     Listed below is the Additional links
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fractal fun</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;2
+            height: 100vh;
+            margin: 0;
+            background-color: black;
+        }1
+        canvas {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+ <p>
+  Below is the links to commonly used websites.
+  </p>
+    <canvas id="fractalCanvas"></canvas>
+    <script>
      <ul>
-   <li><a href="https://github.com/Mjecuse/Mandelbrot.git" target="Github Mandelbrot link"</a></li>
-   <li<a href="https://https://main.d2dwrqvuor357l.amplifyapp.com/" target="AWS Link"</a></li>
- 
-       
-       <a href="https://github.com/Mjecuse/Mandelbrot.git" target="_blank">Mandelbrot GitHub Repository</a>
+    <li><a href="https://www.instructure.com/canvas">Instructure Canvas</a></li>
+    <li><a href="https://weather.com">Weather.com</a></li>
+    <li><a href="https://main.d2dwrqvuor357l.amplifyapp.com/">Amplify App</a></li>
+</ul>
+        const canvas = document.getElementById("fractalCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        canvas.width = window.innerWidth * 0.9;
+        canvas.height = window.innerHeight * 0.9;
+        
+        const colors = [
+            "#FF0000", "#FF7F00", "#FFFF00", "#7FFF00", "#00FF00", "#00FF7F", "#00FFFF", "#007FFF",
+            "#0000FF", "#7F00FF", "#FF00FF", "#FF007F", "#800000", "#808000", "#008080", "#800080"
+        ];
 
-       <a href="https://main.d2dwrqvuor357l.amplifyapp.com/" target="_blank">AWS Hosted Application</a>
- 
-     </ul>
-   </p>
- 
- 
- 
- <canvas id="myCanvas" width="1200" height="800" style="border:1px solid #000000;">
- <script>
- var canvas = document.getElementById('myCanvas')
- var ctx = canvas.getContext('2d')
- ctx.canvas.width = window.innerWidth;
- ctx.canvas.height = window.innerHeight;
- 
- const MAX_ITERATION = 80
- const WIDTH = window.innerWidth
- const HEIGHT = window.innerHeight
- 
- const REAL_SET = { start: -2, end: 1 }
- const IMAGINARY_SET = { start: -1, end: 1 }
- 
- const colors = new Array(16).fill(0).map((_, i) => i === 0 ? '#000' : `#${((1 << 24) * Math.random() | 0).toString(16)}`)
- <script>
- function mandelbrot(c) {
-     let z = { x: 0, y: 0 }, n = 0, p, d;
-     do {
-         p = {
-             x: Math.pow(z.x, 2) - Math.pow(z.y, 2),
-             y: 2 * z.x * z.y
-         }
-         z = {
-             x: p.x + c.x,
-             y: p.y + c.y
-         }
-         d = Math.sqrt(Math.pow(z.x, 2) + Math.pow(z.y, 2))
-         n += 1
-     } while (d <= 2 && n < MAX_ITERATION)
-     return [n, d <= 2]
- }
- 
- function draw() {
-     for (let i = 0; i < WIDTH; i++) {
-         for (let j = 0; j < HEIGHT; j++) {
-             complex = {
-                 x: REAL_SET.start + (i / WIDTH) * (REAL_SET.end - REAL_SET.start),
-                 y: IMAGINARY_SET.start + (j / HEIGHT) * (IMAGINARY_SET.end - IMAGINARY_SET.start)
-             }
- 
-             const [m, isMandelbrotSet] = mandelbrot(complex)
-             ctx.fillStyle = colors[isMandelbrotSet ? 0 : (m % colors.length - 1) + 1]
-             ctx.fillRect(i, j, 1, 1)
-         }
-     }
- }
- 
- draw()
-     </script>
- </canvas>
- </body>
- </html>
+        function drawCircle(x, y, radius, depth) {
+            if (depth > 4) return; 
+            
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = colors[depth % colors.length];
+            ctx.fill();
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+            
+            const newRadius = radius / 2;
+            drawCircle(x - newRadius, y, newRadius, depth + 1);
+            drawCircle(x + newRadius, y, newRadius, depth + 1);
+            drawCircle(x, y - newRadius, newRadius, depth + 1);
+            drawCircle(x, y + newRadius, newRadius, depth + 1);
+        }
+        
+        drawCircle(canvas.width / 2, canvas.height / 2, canvas.width / 4, 0);
+    </script>
+</body>
+</html>
