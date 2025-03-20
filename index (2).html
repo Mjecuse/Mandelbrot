@@ -4,60 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fractal fun</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;2
-            height: 100vh;
-            margin: 0;
-            background-color: black;
-        }1
-        canvas {
-            background-color: white;
-        }
-    </style>
 </head>
+    <body>
+        <h3>Project for Fractal Fun</h3>
+
 <body>
  <p>
   Below is the links to commonly used websites.
   </p>
-    <canvas id="fractalCanvas"></canvas>
-    <script>
      <ul>
+    <li><a href="https://dev.to/foqc/mandelbrot-set-in-js-480o">Mandelbrot<a></li>
     <li><a href="https://www.instructure.com/canvas">Instructure Canvas</a></li>
     <li><a href="https://weather.com">Weather.com</a></li>
     <li><a href="https://main.d2dwrqvuor357l.amplifyapp.com/">Amplify App</a></li>
 </ul>
-        const canvas = document.getElementById("fractalCanvas");
-        const ctx = canvas.getContext("2d");
+       <h1>Mandelbrot 1</h1>
         
-        canvas.width = window.innerWidth * 0.9;
-        canvas.height = window.innerHeight * 0.9;
         
-        const colors = [
-            "#FF0000", "#FF7F00", "#FFFF00", "#7FFF00", "#00FF00", "#00FF7F", "#00FFFF", "#007FFF",
-            "#0000FF", "#7F00FF", "#FF00FF", "#FF007F", "#800000", "#808000", "#008080", "#800080"
-        ];
 
-        function drawCircle(x, y, radius, depth) {
-            if (depth > 4) return; 
-            
-            ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = colors[depth % colors.length];
-            ctx.fill();
-            ctx.strokeStyle = "black";
-            ctx.stroke();
-            
-            const newRadius = radius / 2;
-            drawCircle(x - newRadius, y, newRadius, depth + 1);
-            drawCircle(x + newRadius, y, newRadius, depth + 1);
-            drawCircle(x, y - newRadius, newRadius, depth + 1);
-            drawCircle(x, y + newRadius, newRadius, depth + 1);
-        }
-        
-        drawCircle(canvas.width / 2, canvas.height / 2, canvas.width / 4, 0);
-    </script>
 </body>
 </html>
